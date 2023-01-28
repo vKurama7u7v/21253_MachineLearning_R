@@ -125,6 +125,7 @@ sec2
 y <- seq(from=2, to=10, length=4)
 y
 
+?seq
 # from = 2, to = 10, length = 4
 # (to = 10 - from = 2)/(length - 1 = 3) = 2.666667
 # va sumando de 2.666667 en 2.666667
@@ -334,3 +335,4 @@ f <- gl(4, 10)
 f
 
 tapply(x, f, mean)
+
