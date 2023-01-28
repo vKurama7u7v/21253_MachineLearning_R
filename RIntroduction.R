@@ -307,3 +307,30 @@ lapply(x, mean)
 # rnorm(n) => Números random
 # mean => Calcula el promedio
 
+## =>> 2.6.2 SAPPLY
+str(sapply)
+x <- list(a = rnorm(10), b = rnorm(20), c = rnorm(30))
+y <- sapply(x, mean)
+class(y)
+y
+summary(y)
+View(y)
+
+## =>> 2.6.3 SPLIT
+dat <- data.frame(subject = 1:6, age = c(15,17,16,20,21,23), adult = c(FALSE, FALSE, FALSE, TRUE, TRUE, TRUE))
+s <- split(dat, dat$adult)
+s
+
+sapply(s, function(x){
+  mean(x[["age"]])
+})
+
+## =>> 2.6.4 TAPPLY
+str(tapply)
+
+x <- c(rnorm(10), rnorm(10), rnorm(10), rnorm(10))
+x
+f <- gl(4, 10)
+f
+
+tapply(x, f, mean)
