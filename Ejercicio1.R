@@ -18,3 +18,5 @@ suma
 # Las primeras 5 columnas extraer y guardarlas en una lista
 y <- list(file[5,])
 y
+
+summary(file)
