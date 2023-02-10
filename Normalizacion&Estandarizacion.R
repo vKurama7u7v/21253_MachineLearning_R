@@ -4,7 +4,7 @@ crx
 
 # => Obteniendo las columnas que ocupamos de los datos
 data <- data.frame(
-  "X1" = crx$X3, 
+  "X1" = crx$X3,
   "X2" = crx$X8,
   "X3" = crx$X15)
 data
@@ -16,17 +16,16 @@ pos <- which(data == '?')
 pos
 
 # => Reemplazando "?" por NA
-data[posX1,1] = NA
+data[pos,1] = NA
 data
 
 # => Obteniendo promedio de la fila
-prom <- mean(X1toFloat, na.rm = TRUE)
-prom <- round(promX1, 2)              # Redondenado decimeles a 2
+prom <- mean(data$X1, na.rm = TRUE)
+prom <- round(prom, 2) # Redondenado decimeles a 2
 
 # => Reemplazando valores por el promedio de la columna
-data[posX1,1] = promX1
+data[pos,1] = prom
 data
-
 
 # Normalizando Datos
 class(data)
