@@ -72,12 +72,14 @@ summary(crxEstandar)
 # =-=-=-=-= OTRO MODO =-=-=-=-=
 crx <- read.csv("C:/Users/ISND89/Downloads/crx.data", header=FALSE, na.strings="?")
 
-colNumericas<-c(2, 3, 8, 11, 14, 15)
+colNumericas <- c(2, 3, 8, 11, 14, 15)
+
 for (i in colNumericas) {
   posV<-which(is.na(crx[,i]))
   mediaV<-mean(!is.na(crx[,i]))
   crx[posV,i] <- mediaV
 }
+
 summary(crx)
 
 #función para normalizar
@@ -86,6 +88,7 @@ min_max_norm <- function(x) {
 }
 
 crxNormal <- crx
+
 #apply Min-Max normalization 
 crxNormal[,colNumericas] <- as.data.frame(lapply(crxNormal[,colNumericas], min_max_norm))
 
@@ -96,7 +99,7 @@ standarizacion<-function(x) {
   (x - mean(x))/sd(x)
 }
 
-crxEstandar<-crx
+crxEstandar <- crx
 #estandardiza todas las columnas numéricas
 crxEstandar[,colNumericas] <- as.data.frame(lapply(crxEstandar[,colNumericas], standarizacion))
 
