@@ -13,4 +13,4 @@ trainTestSplit <- floor(nrow(df)*0.7)
 train <- df[1:trainTestSplit,]
 
 # Datos de prueba
-test <- df[1:trainTestSplit,]
+test <- df[-(1:trainTestSplit),]
