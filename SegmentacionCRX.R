@@ -52,7 +52,7 @@ df <- crxNormal
 set.seed(1234)
 
 # OPCION 1
-ind <- sample(2, nrow(df), replace = TRUE, prob = c(0.7, 0.3))
+ind <- sample(2, nrow(df), replace = TRUE, prob = c(0.8, 0.2))
 random.train <- df[ind == 1,]
 random.test <- df[ind == 2,]
 
