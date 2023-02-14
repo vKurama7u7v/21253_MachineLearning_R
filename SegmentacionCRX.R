@@ -64,6 +64,3 @@ train <- df[1:trainTestSplit,]
 
 # Datos de prueba
 test <- df[-(1:trainTestSplit),]
-
-test
-train
