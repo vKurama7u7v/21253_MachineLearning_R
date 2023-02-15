@@ -42,25 +42,32 @@ summary(crx)
 summary(crxNormal)
 summary(crxEstandar)
 
-
-install.packages(ggplot2)
+install.packages(lattice)
+library(lattice)
 library(caret)
 
-# => SEGMENTACION
-df <- crxNormal
+#create data frame
+df <- data.frame(y=c(6, 8, 12, 14, 14, 15, 17, 22, 24, 23),
+                 x1=c(2, 5, 4, 3, 4, 6, 7, 5, 8, 9),
+                 x2=c(14, 12, 12, 13, 7, 8, 7, 4, 6, 5))
 
-# OPCION 1
-ind <- sample(2, nrow(df), replace = TRUE, prob = c(0.8, 0.2))
-random.train <- df[ind == 1,]
-random.test <- df[ind == 2,]
+#view data frame
+df
 
-# OPCION 2
-trainTestSplit <- floor(nrow(df)*0.8)
+#specify the cross-validation method
+ctrl <- trainControl(method = "cv", number = 5)
 
-# Asignacion de los datos de entrenamiento
-train <- df[1:trainTestSplit,]
+#fit a regression model and use k-fold CV to evaluate performance
+# y ~ x1 + x2 => son las columnas de que son si
+# Caracteristicas o columnas del datafraME
+# trControl => Controles
+model <- train(y ~ x1 + x2, data = df, method = "lm", trControl = ctrl)
 
-# Datos de prueba
-test <- df[-(1:trainTestSplit),]
+#view summary of k-fold CV               
+print(model)
 
-test
+ctrl
+model
+
+
+train
