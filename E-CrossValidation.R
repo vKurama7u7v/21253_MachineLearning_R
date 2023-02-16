@@ -79,14 +79,17 @@ nfolds = 5
 
 sizeTest = nrow(dfTemp)/nfolds
 sizeTrain = nrow((dfTemp)) - sizeTest
+
 indicesDFTrain = matrix(nrow = sizeTrain, ncol = nfolds)
 indicesDFTest = matrix(nrow = sizeTest, ncol = nfolds)
 indDF = seq(1,nrow(dfTemp))
+# i <- 1
 
 for( i in 1:nfolds){
   inicioTest = ((nfolds-i)*sizeTest)+1
   indicesDFTest[,i] = seq(inicioTest,(inicioTest-1+sizeTest))
   
+  # Excluye de 121 a 150 (Los quita)
   indicesDFT= indDF[indicesDFTest[,i]]
   indicesDFTrain[,i] = indicesDFT
 }
