@@ -11,7 +11,7 @@ for (i in colNumericas) {
 
 summary(crx)
 
-#funci?n para normalizar
+#función para normalizar
 min_max_norm <- function(x) {
   (x - min(x)) / (max(x) - min(x))
 }
