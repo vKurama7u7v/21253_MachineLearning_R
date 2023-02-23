@@ -21,7 +21,7 @@ dist <- c()
 for (i in 1:38) {
   
   # Inicializando vector lista (cada columna)
-  lista <- c()
+  columna <- c()
   
   # Ciclo for de 1 a 112
   for (j in 1:112) {
@@ -34,11 +34,11 @@ for (i in 1:38) {
     result <- distanciaManhattan(instTrain, instTest)
     
     # Se almacena en resultado a la lista
-    lista <- c(lista, round(result,2))
+    columna <- c(columna, round(result,2))
   }
   
   # Se agrega la columna de resultados (list)
-  dist <- cbind(dist, lista)
+  dist <- cbind(dist, columna)
 }
 
 # Generando un data.frame
