@@ -1,10 +1,10 @@
-# Documentación:
+# Documentaci?n:
 # https://koalatea.io/r-svm-regression/
 
 # Cargando contenido de conjunto de datos
 library(MASS)
 data(Boston)
-str(Boston) # Variable objetivo
+str(Boston)
 
 # Paquete e1071 que hace uso de SVM
 # install.packages("e1071")
@@ -36,7 +36,7 @@ model
 # Preprocesando con caret
 set.seed(1)
 # Aqui los datos se van a escalar
-# (Algo similar a la normalización)
+# (Algo similar a la normalizaci?n)
 model2 <- train(
   medv ~ .,
   data = Boston,
@@ -62,7 +62,7 @@ model3 <- train(
 model3
 
 
-# => PREDICCIÓN
+# => PREDICCI?N
 # quedarse con el 13 primeras columnas, 
 # menos medv que es nuestra variable objetivo (target)
 test.features = subset(testing, select=-c(medv))
