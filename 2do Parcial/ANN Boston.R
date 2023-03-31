@@ -1,4 +1,3 @@
-
 # Import Required packages
 set.seed(500)
 library(neuralnet)
