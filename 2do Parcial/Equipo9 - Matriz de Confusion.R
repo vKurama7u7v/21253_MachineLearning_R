@@ -3,22 +3,24 @@ library(randomForest)
 
 # Dataset
 data <- iris
-set.seed(1234)
 
-# ===== SEGMENTACI覰 =====
+# 路 ===== SEGMENTACI脫N ===== 路 #
 # Segmentacion 80% - 20%
 ind <- sample(2, nrow(data), replace = TRUE, prob = c(0.8, 0.2))
 random.train <- data[ind == 1,]
 random.test <- data[ind == 2,]
 
-# ===== Random Forest =====
+# 路 ===== RANDOM FOREST ===== 路 #
 rf <- randomForest(Species ~ ., data=random.train, ntree=100, proximity=TRUE)
 
-table(predict(rf), random.train$Species)
-print(rf)
-plot(rf)
+# Se realiza la predicci贸n con los datos de prueba
+irisPredict <- predict(rf, newdata = random.test)
 
-irisPred <- predict(rf, newdata=random.test)
-
-table(irisPred, random.test$Species)
+# Se obtiene la matriz de confusi贸n
+table(irisPredict, random.test$Species)
 plot(margin(rf, random.test$Species))
+
+# irisPredict  setosa versicolor virginica
+#   setosa          6          0         0
+#   versicolor      0         11         2
+#   virginica       0          2        10
