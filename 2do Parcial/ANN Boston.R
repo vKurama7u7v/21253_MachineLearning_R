@@ -32,6 +32,9 @@ test.r <- (test_$medv) * (max(data$medv) - min(data$medv)) + min(data$medv)
 
 MSE.nn <- sum((test.r - pr.nn_)^2) / nrow(test_)
 
+MAE.nn <- sum(abs(test.r - pr.nn_)) / nrow(test_)
+RMSE.nn <- sqrt(MSE.nn)
+
 # Plot the neural network
 plot(nn)
 
@@ -39,4 +42,15 @@ plot(nn)
 plot(test_$medv, pr.nn_, col = "red",
      main = 'Real vs Predicted')
 abline(0, 1, lwd = 2)
+
+library(caret)
+R2 <- R2(pr.nn_, test.r)
+RMSE <- RMSE(pr.nn_, test.r)
+MAE <- MAE(pr.nn_, test.r)
+
+# Otras
+R2v2 <- cor(test.r, pr.nn_)**2
+MSEv2 <- mean((test.r - pr.nn_)**2)
+RMSEv2 <- sqrt(MSEv2)
+MAEv2 <- mean(abs(test.r - pr.nn_))
 
