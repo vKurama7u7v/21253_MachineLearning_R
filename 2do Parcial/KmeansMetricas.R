@@ -10,7 +10,7 @@ plot(iris2[c("Sepal.Length", "Sepal.Width")], col = kmeans.result$cluster)
 points(kmeans.result$centers[,c("Sepal.Length", "Sepal.Width")], col = 1:3, pch = 8, cex = 2)
 
 new.result <- cbind(iris, kmeans.result$cluster)
-write.table(new.result, file = "C:\Users\ISND89\Documents", sep = "\t", eol = "\n", dec = ".")
+write.table(new.result, file = "C:\\Users\\ISND89\\Documents\\file.txt", sep = "\t", eol = "\n", dec = ".")
 
 # Calcula manualmente los valoress withinss y betweenss
 # Determina el valor de withinss
@@ -55,3 +55,5 @@ calculaWithinss(kmeans.result, iris2, 3)
 kmeans.result$betweenss
 
 calculaBetweenSS(kmeans.result, iris2, 3)
+kmeans.result$centers
+
