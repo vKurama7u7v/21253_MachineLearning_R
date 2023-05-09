@@ -15,13 +15,15 @@ write.table(new.result, file = "C:\\Users\\ISND89\\Documents\\file.txt", sep = "
 # Calcula manualmente los valoress withinss y betweenss
 # Determina el valor de withinss
 calculaWithinss <- function(clusterVar, df, kmax){
-  clusterWithSS <- NULL
   
+  clusterWithSS <- NULL
   for (k in 1:kmax) {
-    res <- 0
     
+    res <- 0
     for (i in 1:length(df)) {
-      res <- res + sum((df[clusterVar$cluster == k, i] - clusterVar$centers[k,i]^2))
+      
+      res <- res + sum((df[clusterVar$cluster == k, i] - clusterVar$centers[k,i])^2)
+      
     }
     
     clusterWithSS[k] <- res
@@ -52,8 +54,9 @@ calculaBetweenSS <- function(clusterVar, df, kmax){
 
 kmeans.result$withinss
 calculaWithinss(kmeans.result, iris2, 3)
-kmeans.result$betweenss
 
+kmeans.result$betweenss
 calculaBetweenSS(kmeans.result, iris2, 3)
+
 kmeans.result$centers
 
